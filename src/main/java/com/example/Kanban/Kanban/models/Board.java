@@ -24,7 +24,7 @@ public class Board {
     private String name;
 
     @OneToMany(mappedBy="board", cascade = CascadeType.ALL)
-    private List<Columns> columns;
+    private List<Tasks> tasks;
 
 
 }

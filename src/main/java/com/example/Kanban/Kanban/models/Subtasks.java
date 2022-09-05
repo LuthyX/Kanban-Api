@@ -21,7 +21,7 @@ public class Subtasks {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String title;
-    private Boolean isCompleted;
+    private Boolean isCompleted = false;
 
     @JsonIgnore
     @ManyToOne

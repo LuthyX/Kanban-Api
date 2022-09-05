@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "api/board")
+@RequestMapping(path = "api/boards")
 @AllArgsConstructor
 public class BoardController {
 

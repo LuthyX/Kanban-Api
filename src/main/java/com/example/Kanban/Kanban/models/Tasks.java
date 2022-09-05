@@ -23,13 +23,9 @@ public class Tasks {
     private Integer id;
     private String title;
     private String description;
-    private String status;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name= "columnsid", insertable=false, updatable=false)
-    private Columns columns;
-    private Integer columnsid;
+    @Enumerated(EnumType.STRING)
+    private Status status= Status.TODO;
 
     @JsonIgnore
     @ManyToOne
@@ -39,8 +35,6 @@ public class Tasks {
 
     @OneToMany(mappedBy="tasks", cascade = CascadeType.ALL)
     private List<Subtasks> subtasks;
-
-
 
 
 }

@@ -1,11 +1,13 @@
 package com.example.Kanban.Kanban.controllers;
 
 import com.example.Kanban.Kanban.models.Tasks;
+import com.example.Kanban.Kanban.request.TaskUpdateRequest;
 import com.example.Kanban.Kanban.services.TasksService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
@@ -13,16 +15,22 @@ import java.util.List;
 public class TasksController {
     private final TasksService tasksService;
 
-    @GetMapping(path = "{boardid}")
+    @GetMapping(path = "/board/{boardid}")
     public List<Tasks> getAllTasks(@PathVariable("boardid") Integer boardid){
         return tasksService.getAllTasks(boardid);
     }
-
-    @GetMapping(path = "{boardid}/{columnsid}")
-    public List<Tasks> getAllTasksByColummns(@PathVariable("boardid") Integer boardid,
-                                   @PathVariable("columnsid") Integer columnsid){
-        return tasksService.getAllTasksByColumns(boardid,columnsid);
+    @GetMapping(path = "{taskid}")
+    public Optional<Tasks> getTask(@PathVariable("taskid") Integer taskid){
+        return tasksService.getTask(taskid);
     }
+
+    @PutMapping(path = "update/{taskid}")
+    public void updateTask(@PathVariable("taskid") Integer taskid,
+                            @RequestBody TaskUpdateRequest taskUpdateRequest){
+        tasksService.updateTask(taskid, taskUpdateRequest);
+
+    }
+
 
     @PostMapping(path = "add")
     public void addTask(@RequestBody Tasks tasks){
