@@ -12,6 +12,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = "api/tasks")
+@CrossOrigin()
 public class TasksController {
     private final TasksService tasksService;
 

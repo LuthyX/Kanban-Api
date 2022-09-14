@@ -11,6 +11,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "api/boards")
 @AllArgsConstructor
+@CrossOrigin()
 public class BoardController {
 
     private final BoardService boardService;
