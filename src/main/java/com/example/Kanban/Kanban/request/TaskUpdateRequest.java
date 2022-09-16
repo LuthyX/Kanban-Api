@@ -12,5 +12,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TaskUpdateRequest {
 
+    private String title;
+    private String description;
     private Status status;
 }
+

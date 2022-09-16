@@ -34,6 +34,17 @@ public class TasksService {
 
     public void updateTask(Integer taskid, TaskUpdateRequest taskUpdateRequest) {
         Tasks task = tasksRepository.findById(taskid).orElseThrow(()->new IllegalStateException("Task ID does not exist"));
-        task.setStatus(taskUpdateRequest.getStatus());
+
+        if (taskUpdateRequest.getTitle()!= null){
+            task.setTitle(taskUpdateRequest.getTitle());
+        }
+        if (taskUpdateRequest.getDescription()!= null){
+            task.setDescription(task.getDescription());
+        }
+        if(taskUpdateRequest.getStatus()!= null){
+            task.setStatus(taskUpdateRequest.getStatus());
+        }
+        tasksRepository.save(task);
+
     }
 }
