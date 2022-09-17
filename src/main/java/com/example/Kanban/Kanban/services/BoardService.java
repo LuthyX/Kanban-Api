@@ -2,6 +2,7 @@ package com.example.Kanban.Kanban.services;
 
 import com.example.Kanban.Kanban.models.Board;
 import com.example.Kanban.Kanban.repositories.BoardRepository;
+import com.example.Kanban.Kanban.request.BoardRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,5 +32,11 @@ public class BoardService {
 
     public void deleteBoard(Integer id) {
         boardRepository.deleteById(id);
+    }
+
+    public void updateBoard(Integer id, BoardRequest boardRequest) {
+         Board board = boardRepository.findById(id).orElseThrow(()-> new IllegalStateException("Board does not exist"));
+        board.setName(boardRequest.getName());
+        boardRepository.save(board);
     }
 }

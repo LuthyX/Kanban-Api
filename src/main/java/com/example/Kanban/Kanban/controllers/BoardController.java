@@ -1,6 +1,7 @@
 package com.example.Kanban.Kanban.controllers;
 
 import com.example.Kanban.Kanban.models.Board;
+import com.example.Kanban.Kanban.request.BoardRequest;
 import com.example.Kanban.Kanban.services.BoardService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,10 @@ public class BoardController {
     @DeleteMapping(path = "{id}")
     public void deleteBoard(@PathVariable("id") Integer id){
         boardService.deleteBoard(id);
+    }
+
+    @PutMapping(path = "{id}")
+    public void updateBoard(@PathVariable("id") Integer id, @RequestBody BoardRequest boardRequest){
+        boardService.updateBoard(id, boardRequest);
     }
 }
