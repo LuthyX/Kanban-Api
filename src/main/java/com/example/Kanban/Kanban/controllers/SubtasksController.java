@@ -18,7 +18,7 @@ public class SubtasksController {
     @GetMapping(path = "{boardid}/{tasksid}")
     public List<Subtasks> getAllSubTasks(@PathVariable("boardid") Integer boardid,
                                          @PathVariable("tasksid") Integer tasksid){
-        return subtasksService.getAllSubTasks(boardid, tasksid);
+        return subtasksService.getAllSubTasks(boardid, tasksid );
     }
 
     @PutMapping(path = "update/{id}")
