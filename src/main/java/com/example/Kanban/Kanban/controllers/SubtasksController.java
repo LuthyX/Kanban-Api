@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping(path = "api/subtasks")
-@CrossOrigin()
+@CrossOrigin("*")
 public class SubtasksController {
     private final SubtasksService subtasksService;
 
